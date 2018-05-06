@@ -1,0 +1,38 @@
+cmake_minimum_required(VERSION 2.8)
+cmake_policy(VERSION 2.8)
+
+set(FILE_LIST
+    layer0.c
+
+    pin_descriptor.h
+)
+
+if(TRIDENT_LOGGING_ERROR)
+    set(FILE_LIST
+        ${FILE_LIST}
+        error.c
+    )
+endif()
+
+if(TRIDENT_LOGGING_INFO)
+    set(FILE_LIST
+        ${FILE_LIST}
+        message.c
+    )
+endif()
+
+set(TRIDENT_SIMULATION_IPC_DUMMY_FILE_FOLDER "${CMAKE_CURRENT_BINARY_DIR}/ipc" CACHE PATH "Folder in which the dummy files for simulation ipc will be created")
+
+if(NOT EXISTS ${TRIDENT_SIMULATION_IPC_DUMMY_FILE_FOLDER})
+    file(MAKE_DIRECTORY ${TRIDENT_SIMULATION_IPC_DUMMY_FILE_FOLDER})
+endif()
+
+if(NOT IS_DIRECTORY ${TRIDENT_SIMULATION_IPC_DUMMY_FILE_FOLDER})
+    MESSAGE(FATAL_ERROR "Unable to create ipc dummy file folder")
+endif()
+
+set(TRIDENT_SIMULATION_IPC_WIRE_CONFIG "${CMAKE_CURRENT_LIST_DIR}/../../../../demo/ipc_wire.cfg" CACHE FILEPATH "Configuration file for pin - wire connections")
+
+if(NOT EXISTS ${TRIDENT_SIMULATION_IPC_WIRE_CONFIG})
+    MESSAGE(FATAL_ERROR "unable to find ipc wire config file, please choose a valid file")
+endif()

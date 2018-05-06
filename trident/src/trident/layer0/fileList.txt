@@ -1,0 +1,29 @@
+cmake_minimum_required(VERSION 2.8)
+cmake_policy(VERSION 2.8)
+
+getSubdirectories(platform_names ${CMAKE_CURRENT_LIST_DIR})
+
+list(GET platform_names 0 first_platform_name)
+
+set(TRIDENT_PLATFORM "${first_platform_name}" CACHE STRING "Trident target platform")
+set_property(CACHE TRIDENT_PLATFORM PROPERTY STRINGS ${platform_names})
+
+set(SUBDIRECTORIES
+    "${TRIDENT_PLATFORM}"
+)
+
+string(LENGTH ${TRIDENT_PLATFORM} platform_string_length)
+if(platform_string_length GREATER 0)
+    set(trident_lib_name "${trident_lib_name}_${TRIDENT_PLATFORM}" CACHE INTERNAL "")
+endif()
+
+set(FILE_LIST
+    layer0.h
+    layer0_types.h
+)
+
+set(FILE_LIST
+    ${FILE_LIST}
+    error.h
+    message.h
+)

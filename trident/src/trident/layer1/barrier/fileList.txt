@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 2.8)
+cmake_policy(VERSION 2.8)
+
+set(FILE_LIST
+    synchronization_barriers.c
+    synchronization_barriers.h
+
+    sender_barrier.c
+    sender_barrier.h
+
+    receiver_barrier.c
+    receiver_barrier.h
+)

@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 2.8)
+cmake_policy(VERSION 2.8)
+
+set(SUBDIRECTORIES
+    layer0
+    layer1
+)
+
+set(FILE_LIST
+    trident.c
+    trident.h
+
+    errno.h
+    log.h
+    util.h
+    def.h
+
+    word.c
+    word.h
+
+    types.h
+)
+

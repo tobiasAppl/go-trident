@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 2.8)
+cmake_policy(VERSION 2.8)
+
+set(SUBDIRECTORIES
+    barrier
+)
+
+set(FILE_LIST
+    layer1.c
+    layer1.h
+
+    layer1_types.h
+    layer1_result_types.h
+
+    sender_fsm.c
+    sender_fsm.h
+
+    receiver_fsm.c
+    receiver_fsm.h
+)
